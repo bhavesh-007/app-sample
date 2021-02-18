@@ -3,5 +3,8 @@
 
     <string name="open">Open navigation drawer</string>
     <string name="close">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Home Fragment</string>
+    <string name="blank_frag">Blank</string>
 
 </resources>

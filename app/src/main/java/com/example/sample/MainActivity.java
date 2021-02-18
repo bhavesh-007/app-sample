@@ -5,11 +5,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView nav;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    BottomNavigationView bottomNav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +34,20 @@ public class MainActivity extends AppCompatActivity {
         toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        bottomNav = findViewById(R.id.bottomNav);
+        openFragment(new HomeFragment());
+
+        bottomNav.setOnNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.Home) {
+                openFragment(new HomeFragment());
+                return true;
+            }
+            openFragment(new Blank());
+            return true;
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
@@ -45,5 +62,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+    void openFragment(Fragment fragment){
+        FragmentTransaction FT = getSupportFragmentManager().beginTransaction();
+        FT.replace(R.id.frame,fragment);
+        FT.addToBackStack(null);
+        FT.commit();
     }
 }

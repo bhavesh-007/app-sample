@@ -15,6 +15,7 @@
         >
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,27 +27,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
+                android:gravity="center"
                 android:minHeight="?attr/actionBarSize"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:gravity="center"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 app:popupTheme="@menu/header_popup">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:contentDescription="Logo"
-                        android:src="@drawable/logo" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Logo"
+                    android:padding="8dp"
+                    android:src="@drawable/logo" />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="#ffffff"
@@ -54,7 +65,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:menu="@menu/bottom"
             app:labelVisibilityMode="labeled"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:itemIconTint="@color/bottom_nav_color"
+            app:itemTextColor="@color/bottom_nav_color"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav"
