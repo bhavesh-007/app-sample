@@ -1,21 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
     tools:context=".HomeFragment"
-    >
-    <TextView
-        android:layout_width="0dp"
+    android:orientation="vertical">
+
+    <ViewFlipper
+        android:id="@+id/carousel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ad1"
+            android:contentDescription="ad1" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ad2"
+            android:contentDescription="ad2" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ad3"
+            android:contentDescription="ad3" />
+    </ViewFlipper>
+    <LinearLayout
+        android:id="@+id/dots_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        android:layout_weight="10"
-        android:layout_gravity="center"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp">
+    </LinearLayout>
 </LinearLayout>
 
