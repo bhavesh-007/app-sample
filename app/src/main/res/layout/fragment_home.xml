@@ -1,217 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:weightSum="10"
-    tools:context=".HomeFragment"
-    android:orientation="vertical"
-    android:scrollbars="vertical">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:weightSum="10"
+        tools:context=".HomeFragment"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
 
-    <ViewFlipper
-        android:id="@+id/carousel"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp">
-        <ImageView
+        <ViewFlipper
+            android:id="@+id/carousel"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ad1"
+                android:contentDescription="ad1" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ad2"
+                android:contentDescription="ad2" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ad3"
+                android:contentDescription="ad3" />
+        </ViewFlipper>
+        <LinearLayout
+            android:id="@+id/dots_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ad1"
-            android:contentDescription="ad1" />
-        <ImageView
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ad2"
-            android:contentDescription="ad2" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ad3"
-            android:contentDescription="ad3" />
-    </ViewFlipper>
-    <LinearLayout
-        android:id="@+id/dots_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="16dp">
-    </LinearLayout>
-    <TextView
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/services_provide"
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        android:padding="4dp"
-        android:fontFamily="@font/segoi"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            android:text="@string/services_provide"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:padding="4dp"
+            android:fontFamily="@font/segoi"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3"
-            android:orientation="horizontal">
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/card_layout"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="2dp"
-                android:checkable="true"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Regular Services"
-                    android:fontFamily="@font/segoi"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:drawablePadding="4dp"
-                    app:drawableTopCompat="@drawable/gray_regular_service" />
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/card_layout"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="15dp"
-                android:checkable="true"
-                android:layout_gravity="center">
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_layout"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="2dp"
+                    android:checkable="true"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Regular Services"
+                        android:fontFamily="@font/segoi"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:drawablePadding="4dp"
+                        app:drawableTopCompat="@drawable/gray_regular_service" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_layout"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="15dp"
+                    android:checkable="true"
+                    android:layout_gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawablePadding="11dp"
-                    android:fontFamily="@font/segoi"
-                    android:textAlignment="center"
-                    android:text="Painting"
-                    app:drawableTopCompat="@drawable/gray_airbrush_paint" />
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/card_layout"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="15dp"
-                android:checkable="true">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Denting"
-                    android:layout_gravity="center"
-                    android:drawablePadding="10dp"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/segoi"
-                    app:drawableTopCompat="@drawable/gray_denting" />
-            </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawablePadding="11dp"
+                        android:fontFamily="@font/segoi"
+                        android:textAlignment="center"
+                        android:text="Painting"
+                        app:drawableTopCompat="@drawable/gray_airbrush_paint" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_layout"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="15dp"
+                    android:checkable="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Denting"
+                        android:layout_gravity="center"
+                        android:drawablePadding="10dp"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/segoi"
+                        app:drawableTopCompat="@drawable/gray_denting" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_layout"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp"
+                    android:checkable="true"
+                    android:clipToPadding="true"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/segoi"
+                        android:textAlignment="center"
+                        android:text="Car Scanning"
+                        app:drawableTopCompat="@drawable/gray_car_scanning" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_layout"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="15dp"
+                    android:checkable="true"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AC Service"
+                        android:layout_gravity="center"
+                        android:drawablePadding="11dp"
+                        android:fontFamily="@font/segoi"
+                        android:textAlignment="center"
+                        app:drawableTopCompat="@drawable/gray_ac_service" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/card_layout"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="15dp"
+                    android:checkable="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Car Wash"
+                        android:layout_gravity="center"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/segoi"
+                        android:textAlignment="center"
+                        app:drawableTopCompat="@drawable/gray_car_wash" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3"
-            android:orientation="horizontal">
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/card_layout"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="10dp"
-                android:checkable="true"
-                android:clipToPadding="true"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/segoi"
-                    android:textAlignment="center"
-                    android:text="Car Scanning"
-                    app:drawableTopCompat="@drawable/gray_car_scanning" />
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/card_layout"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="15dp"
-                android:checkable="true"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AC Service"
-                    android:layout_gravity="center"
-                    android:drawablePadding="11dp"
-                    android:fontFamily="@font/segoi"
-                    android:textAlignment="center"
-                    app:drawableTopCompat="@drawable/gray_ac_service" />
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/card_layout"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="15dp"
-                android:checkable="true">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Car Wash"
-                    android:layout_gravity="center"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/segoi"
-                    android:textAlignment="center"
-                    app:drawableTopCompat="@drawable/gray_car_wash" />
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:text="Continue"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/segoi"
+            android:textStyle="bold"/>
     </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:text="Continue"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/segoi"
-        android:textStyle="bold"/>
-</LinearLayout>
-
+</ScrollView>
