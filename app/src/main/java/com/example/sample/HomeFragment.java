@@ -1,5 +1,6 @@
 package com.example.sample;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,9 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.google.android.material.card.MaterialCardView;
@@ -53,9 +56,9 @@ public class HomeFragment extends Fragment {
     TextView[] texts =new TextView[6];
     int[] inactive_images = {R.drawable.gray_regular_service,R.drawable.gray_airbrush_paint,R.drawable.gray_denting,
     R.drawable.gray_car_scanning,R.drawable.gray_ac_service,R.drawable.gray_car_wash};
-
     int[] active_images = {R.drawable.regular_service,R.drawable.airbrush_paint,R.drawable.denting,
             R.drawable.car_scanning,R.drawable.ac_service,R.drawable.car_wash};
+    Button button;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +124,20 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+        button = view.findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            boolean bool=false;
+            for(int i=0;i<=5;i++){
+                if(cards[i].isChecked())
+                    bool=true;
+            }
+            if(bool){
+                Intent i = new Intent(getActivity(),OutputActivity.class);
+                requireContext().startActivity(i);
+            }else{
+                Toast.makeText(getContext(),"Please select a service",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     void setActiveDot(int position){
         if(dotsLayout.getChildCount() > 0){
