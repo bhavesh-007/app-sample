@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,8 +14,12 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.google.android.material.card.MaterialCardView;
+
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -44,6 +49,13 @@ public class HomeFragment extends Fragment {
     ViewFlipper flip;
     LinearLayout dotsLayout;
     ImageView[] dots = new ImageView[3];
+    MaterialCardView[] cards = new MaterialCardView[6];
+    TextView[] texts =new TextView[6];
+    int[] inactive_images = {R.drawable.gray_regular_service,R.drawable.gray_airbrush_paint,R.drawable.gray_denting,
+    R.drawable.gray_car_scanning,R.drawable.gray_ac_service,R.drawable.gray_car_wash};
+
+    int[] active_images = {R.drawable.regular_service,R.drawable.airbrush_paint,R.drawable.denting,
+            R.drawable.car_scanning,R.drawable.ac_service,R.drawable.car_wash};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +77,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
+        cards[0] = view.findViewById(R.id.card1);
+        cards[1] = view.findViewById(R.id.card2);
+        cards[2] = view.findViewById(R.id.card3);
+        cards[3] = view.findViewById(R.id.card4);
+        cards[4] = view.findViewById(R.id.card5);
+        cards[5] = view.findViewById(R.id.card6);
         flip = view.findViewById(R.id.carousel);
         flip.setAutoStart(true);
         flip.setFlipInterval(4000);
@@ -86,6 +104,23 @@ public class HomeFragment extends Fragment {
             public void onAnimationRepeat(Animation animation) {
             }
         });
+        for(int i=0;i<=5;i++){
+            int finalI = i;
+            cards[i].setOnClickListener(v -> {
+                cards[finalI].toggle();
+                if(cards[finalI].isChecked()){
+                    cards[finalI].setStrokeColor(ResourcesCompat.getColor(getResources(),R.color.blue_700,null));
+                    cards[finalI].setStrokeWidth(2);
+                    texts[finalI] = (TextView) cards[finalI].getChildAt(0);
+                    texts[finalI].setCompoundDrawablesWithIntrinsicBounds(0,active_images[finalI],0,0);
+                }else{
+                    cards[finalI].setStrokeColor(null);
+                    cards[finalI].setStrokeWidth(0);
+                    texts[finalI] = (TextView) cards[finalI].getChildAt(0);
+                    texts[finalI].setCompoundDrawablesWithIntrinsicBounds(0,inactive_images[finalI],0,0);
+                }
+            });
+        }
     }
     void setActiveDot(int position){
         if(dotsLayout.getChildCount() > 0){
@@ -94,9 +129,9 @@ public class HomeFragment extends Fragment {
         for(int i=0;i<=2;i++){
             dots[i] = new ImageView(getContext());
             if(i==position){
-                dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.active_dot));
+                dots[i].setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.active_dot));
             }else{
-                dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.inactive_dot));
+                dots[i].setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.inactive_dot));
             }
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(12,0,12,0);

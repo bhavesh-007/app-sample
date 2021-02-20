@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     BottomNavigationView bottomNav;
+    Fragment Home,blank,active;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +38,21 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         bottomNav = findViewById(R.id.bottomNav);
-        openFragment(new HomeFragment());
+        Home = new HomeFragment();
+        blank = new Blank();
+        active = Home;
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().add(R.id.frame,Home,"1").commit();
+        fm.beginTransaction().add(R.id.frame,blank,"blank").hide(blank).commit();
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.Home) {
-                openFragment(new HomeFragment());
-                return true;
+                fm.beginTransaction().hide(active).show(Home).commit();
+                active=Home;
+            }else {
+                fm.beginTransaction().hide(active).show(blank).commit();
+                active = blank;
             }
-            openFragment(new Blank());
             return true;
         });
     }
@@ -62,10 +71,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-    void openFragment(Fragment fragment){
-        FragmentTransaction FT = getSupportFragmentManager().beginTransaction();
-        FT.replace(R.id.frame,fragment);
-        FT.commit();
     }
 }
